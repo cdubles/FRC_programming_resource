@@ -18,6 +18,8 @@ public class Robot extends IterativeRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
+  Encoder sampleEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -75,7 +77,6 @@ public class Robot extends IterativeRobot {
   public void teleopPeriodic() {
     // 0 and 1 are the port numbers for the two digital inputs and false tells the encoder to not invert the counting direction
   // k4X makes sure that an encoder module from the FPGA is used and 4X accuracy is obtained
-    Encoder sampleEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     sampleEncoder.setMaxPeriod(.1);// time between pulses on an individual channel in seconds 
     sampleEncoder.setMinRate(10);  // minimum rate before the device is considered stopped
     sampleEncoder.setDistancePerPulse(5); // Pulses per Revolution
